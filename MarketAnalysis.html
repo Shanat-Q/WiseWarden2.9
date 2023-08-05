@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+
+:root {
+  --color-brand-primary: hsl(var(--color-brand-primary-h), 43%, 43%);
+  --color-brand-primary-h: 251;
+  --color-brand-primary-s: 43%;
+  --color-brand-primary-l: 43%;
+  --color-brand-accent: hsl(var(--color-brand-accent-h), 96%, 61%);
+  --color-brand-accent-h: 16;
+  --color-brand-accent-s: 96%;
+  --color-brand-accent-l: 61%;
+  --color-brand-accent-bg: hsl(calc(var(--color-brand-accent-h) + 17), 100%, 96%);
+  --ratio: 1.4;
+  --s-6: calc(var(--s-5) / var(--ratio));
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: calc(1.05rem + 0.333vw);
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+  --s6: calc(var(--s5) * var(--ratio));
+  font-size: 62.5%;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+@media (min-width: 40.625em) {
+  :root {
+    --s0: calc(1.25rem + 0.333vw);
+  }
+}
+@media (min-width: 48em) {
+  :root {
+    --s0: calc(1.4rem + 0.333vw);
+  }
+}
+@media (min-width: 62em) {
+  :root {
+    --s0: calc(1.6rem + 0.333vw);
+  }
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 1.4rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  background-color: white;
+  min-height: 100vh;
+}
+@media (min-width: 48em) {
+  body {
+    font-size: 1.5rem;
+  }
+}
+h2, h3, p, ul {
+  margin: 0;
+}
+ul {
+  padding: 0;
+}
+ul li {
+  /* Remove li Bullets with zero-width space for accessability */
+  list-style-type: none;
+}
+ul li:before {
+  content: "\200B";
+  /* add zero-width space */
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  position: absolute;
+}
+.c-section {
+  padding: 0 var(--s3);
+}
+.c-section__title {
+  padding: var(--s2) var(--s3) calc(var(--s6) * 1.8);
+  margin: 0 calc(var(--s3) * -1);
+  color: #fff;
+  font-size: var(--s4);
+  font-weight: 900;
+  text-align: center;
+}
+@media (min-width: 40.625em) {
+  .c-section__title {
+    padding: var(--s2) var(--s3) var(--s4);
+  }
+}
+@media (min-width: 40.625em) {
+  .c-section__title {
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-end;
+    position: relative;
+    text-align: unset;
+  }
+}
+.c-section__title:after {
+  content: '';
+  display: block;
+  background-size: calc(var(--s5) * 3) calc(var(--s5) * 3);
+  width: calc(var(--s5) * 3);
+  height: calc(var(--s5) * 3);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(11rem);
+  z-index: 1;
+  background-image: url("");
+}
+@media (min-width: 40.625em) {
+  .c-section__title:after {
+    margin-left: auto;
+    margin-right: 0;
+    transform: translateY(2rem);
+  }
+}
+.c-section span:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  transform: skew(0deg, 10deg);
+  z-index: -1;
+  background: var(--color-brand-primary);
+  background-attachment: fixed;
+  background-image: url("");
+}
+.c-section span:after {
+  content: " " ;
+  display: block;
+  font-size: 1.4rem;
+  position: absolute;
+  font-weight: 350;
+  padding: 0 var(--s3);
+  color: rgba(255, 255, 255, 0.85);
+  left: 9px;
+}
+@media (min-width: 40.625em) {
+  .c-section span:after {
+    font-size: 23%;
+  }
+}
+@media (min-width: 40.625em) {
+  .c-section span:after {
+    width: 47ch;
+  }
+}
+@media (min-width: 48em) {
+  .c-section span:after {
+    width: 57ch;
+  }
+}
+@media (min-width: 62em) {
+  .c-section span:after {
+    width: 67ch;
+  }
+}
+.c-services {
+  display: grid;
+  grid-gap: var(--s2);
+  margin: 0 calc(var(--s3) * -1);
+  padding: var(--s6) var(--s3);
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 40.625em) {
+  .c-services {
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: minmax(100px, 1fr);
+  }
+}
+@media (min-width: 40.625em) {
+  .c-services {
+    padding: 0 var(--s3);
+  }
+}
+.c-services:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--color-brand-accent-bg);
+  width: 100%;
+  height: 100%;
+  transform: skew(0deg, 10deg);
+  background-image: url("");
+}
+.c-services__item {
+  background: #fff;
+  padding: calc(var(--s2) - 0.6rem) var(--s1);
+  border-radius: 25px;
+  box-shadow: 0 7px 20px rgba(100, 28, 2, 0.135);
+  transition: all 300ms ease, transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 40.625em) {
+  .c-services__item {
+    transform: translateY(-85px);
+  }
+}
+@media (min-width: 48em) {
+  .c-services__item {
+    transform: translateY(-130px);
+  }
+}
+@media (min-width: 40.625em) {
+  .c-services__item:nth-of-type(1) {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+}
+@media (min-width: 62em) {
+  .c-services__item:nth-of-type(1) {
+    grid-column: 5 / -1;
+    grid-row: 3;
+  }
+}
+@media (min-width: 40.625em) {
+  .c-services__item:nth-of-type(2) {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+  }
+}
+@media (min-width: 62em) {
+  .c-services__item:nth-of-type(2) {
+    grid-column: 3 / span 2;
+    grid-row: auto;
+  }
+}
+@media (min-width: 40.625em) {
+  .c-services__item:nth-of-type(3) {
+    grid-column: 4 / -1;
+  }
+}
+@media (min-width: 62em) {
+  .c-services__item:nth-of-type(3) {
+    grid-column: 4 / -1;
+    grid-row: 2;
+  }
+}
+@media (min-width: 40.625em) {
+  .c-services__item:nth-of-type(4) {
+    grid-column: 1 / span 4;
+  }
+}
+@media (min-width: 62em) {
+  .c-services__item:nth-of-type(4) {
+    grid-column: 1 / span 3;
+  }
+}
+@media (min-width: 40.625em) {
+  .c-services__item:nth-of-type(5) {
+    grid-column: 5 / -1;
+  }
+}
+@media (min-width: 62em) {
+  .c-services__item:nth-of-type(5) {
+    grid-column: 1 / span 4;
+  }
+}
+@media (min-width: 40.625em) {
+  .c-services__item:nth-of-type(6) {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+  }
+}
+@media (min-width: 62em) {
+  .c-services__item:nth-of-type(6) {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+}
+.c-services__item h3 {
+  color: var(--color-brand-primary);
+  font-size: var(--s1);
+  line-height: 1.2;
+}
+.c-services__item:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px 0;
+  cursor: pointer;
+  transition: inherit;
+  background-color: var(--color-brand-accent);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("");
+}
+.c-services__item p {
+  margin-top: var(--s-1);
+  font-weight: 400;
+  color: #706d7e;
+}
+.c-services__item:hover {
+  background-color: var(--color-brand-accent);
+}
+@media (min-width: 40.625em) {
+  .c-services__item:hover {
+    transform: translateY(-93px);
+  }
+}
+@media (min-width: 48em) {
+  .c-services__item:hover {
+    transform: translateY(-138px);
+  }
+}
+.c-services__item:hover h3 {
+  color: #fff;
+}
+.c-services__item:hover p {
+  color: rgba(255, 255, 255, 0.8);
+}
+.c-services__item:hover:after {
+  background-color: #fff;
+  background-image: url("");
+}
+
+a{
+    text-decoration: none;
+    padding: 10px;
+}
+.btn{
+    padding: 10px;
+    margin: 5% 47% 0px 44% ;
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+
+<section class="c-section">
+    <h2 class="c-section__title"><span>Market Analysis!</span></h2>
+    <ul class="c-services">
+	
+	
+	
+        <li class="c-services__item">
+            <h3>Smartphone Addiction Statistics!</h3>
+		
+         <p>
+			
+			Amid the COVID-19 pandemic lockdowns and social distancing requirements, smartphone use has increased.<br>
+			<br>According to Ofcom, a communications regulator, average mobile phone use surged during the early weeks,<br>
+			<br>of the pandemic in the U.K, with call times increasing from three minutes and 40 seconds before the lockdown,
+			<br>to five minutes and 26 seconds after the lockdown,Increased phone time does not necessarily indicate smartphone,<br>
+			<br>addiction caused by the COVID-19 pandemic; however, related trends, such as the growing number of online gambling, <br>
+			<br>and gaming users, directly correlate to increased smartphone use, Online gaming and gambling addictions are growing
+			<br>amid the pandemic, Factors in the rise include feelings of isolation and reduced financial stability due to the economic downturn.<br>
+           <br> Smartphone addiction is not new, In its 2019 mobile fact sheet,<br><br> Pew Research Center reports that 81% of Americans owned a smartphone, 
+			? up from 35% in 2011.<br> At the time, Americans spent a lot of time on their smartphones, too, checking it 96 times daily (or roughly
+			once every 10 minutes),<br><br> According to a report from tech device insurance and support firm Asurion, In fact, ?nomophobia,? a term that
+			<br>describes the fear of being without a smartphone, was the People?s Word of 2018 according to the online Cambridge Dictionary.<br>
+          <br>  The following usage and smartphone addiction statistics provide additional insights about the growing reliance on digital devices (both before and 
+            during the pandemic).
+
+    
+ </p>
+        </li>
+		
+		 <!-- <li class="c-services__item"> -->
+            <!-- <h3>COVID-19 Made You Addicted to Your Phone??</h3> -->
+            <!-- <p> -->
+			
+
+           
+	<!-- </p> -->
+        <!-- </li> -->
+		
+		
+		 <li class="c-services__item">
+            <h3>Indians love their phones why? </h3>
+            <p>
+			A drastic spike in usage occurred in the first 90 days of the COVID-19 pandemic response, Verizon reported over 519 billion text messages and over 
+           10 trillion megabytes of data, equivalent to 10.3 trillion Instagram photos,<br>
+       <br>Indian teens and parents think that too much screen time and device usage is a problem, The Pew Research Center reports that nearly 55% of U.S. 
+           teens admit they?re addicted to their smartphones, and two-thirds of parents are worried,<br>
+          <br> A Common Sense Media report on media use by teens and tweens says that teens spend more than seven hours on their phones each day, while tweens 
+           average almost five hours,<br>
+           <br>Americans love their phones, with 75% saying they are addicted to them and over 65% admitting they sleep with their phones, according to Reviews.org.<br>
+         <br>  An unhealthy correlation exists between digital screens and sleep for teens; about one-third sleep with their devices, according to Common Sense Media,
+           Deloitte reports that more than 90% of people use smartphones daily, and 17% of 18- to 24-year-old adults check their smartphones about 200 times a day, 
+           equal to every 7.2 minutes.<br>
+
+           
+	</p>
+        </li>
+		
+		
+		
+		
+		 <li class="c-services__item">
+            <h3>Smartphone Effects on the Brain How?..</h3>
+            <p>
+			 Smartphone Effects on the Brain
+           Experts suggest that smartphone addiction can impact brains negatively. Smartphone overuse can create unhealthy dependencies that can trigger 
+           psychological issues. Examples of smartphone effects on the brain include:-<br>
+          <br> Fear of missing out (FOMO).Research published in Cogent Psychology shows that smartphone users? anxiety can be reinforced by,<br> 
+         <br>  Their fear of missing out, FOMO describes a state of mind in which smartphone users get anxious with uncertainty. For example,<br>
+         <br> Not knowing what their friends are doing may leave them feeling outside of the group, As a result, they may feel less important, <br>
+         <br> Among their group of friends, In response, they feel they must regularly check their phones to stay up to date on current news,<br>
+         <br> Attachment, The Cogent Psychology study also discusses attachment as an effect of smartphone addiction on the brain. Attachment<br>
+        <br>  Describes an emotional bond. In psychology, attachment theory describes the connection between human beings, such as between a <br>
+        <br>  Newborn and a mother, and the separation experience, which can create anxiety and distress in children, Similarly, smartphone<br>
+         <br> Users? attachment refers to the anxiety and stress they feel when they are separated from their phones,<br>
+         <br> Sleep patterns, Smartphone addiction can also affect sleep patterns, A study published in Frontiers in Psychiatry investigated.<br>
+		  
+
+           
+	</p>
+        </li>
+		
+		
+		 <li class="c-services__item">
+            <h3>how smartphone addiction lowered the sleep quality..</h3>
+            <p>
+			 how smartphone addiction lowered the sleep quality of 1,164 university students. It found the sleep disturbance was prevalent
+         among nearly 16% of the students,<br>
+        <br> Other psychological impacts of smartphone addiction include depression, anxiety and behavioral and compulsive disorders, For 
+        <br> example, social media apps may lead users to compare themselves with others, increasing their feelings of depression, Additional
+       <br>  psychological impacts of smartphone addiction on people?s lives include loss of focus and negative personality traits such as
+        self-absorption.
+
+           
+	</p>
+        </li>
+		
+		 <li class="c-services__item">
+            <h3>Physical changes in the brain.. </h3>
+            <p>
+			 Research also points to physical changes in the brain due to smartphone overuse,<br> In a recent study published in Addictive Behaviors,
+        <br>researchers analyzed MRI images of a small group of 18- to 30-year-olds who met the criteria for smartphone addiction,<br> The MRI data
+      <br>  revealed ?lower gray matter volume in insula and temporal cortex,? a measure of brain activity indicative of physical changes in the 
+        brain and associated with substance abuse addictions.
+
+           
+	</p>
+        </li>
+		
+		
+		 <li class="c-services__item">
+            <h3>Who spend over three hours?</h3>
+            <p>
+			U.S. adolescents who spend over three hours a day on social media are potentially at higher risk for mental health problems, including 
+       internalizing problems, according to a JAMA Psychiatry study,<br>
+      <br> Excessive smartphone and social media use can raise ?mental distress, self-injurious behavior and suicidality among youth?; the effect 
+       is higher among girls, according to research published in the Canadian Medical Association Journal,<br>
+     <br>  Smartphone addicted individuals often experience increased loneliness. This can have serious mental and physical health implications,
+       such as low sleep quality and reduced immune system function,<br>
+     <br>  Once smartphone users fall into a pattern of frequently monitoring negative news, their mood can worsen and make them more anxious. 
+       This type of activity is also known as ?doomscrolling.?<br>
+      <br> Increased parental smartphone use during the COVID-19 pandemic may be impacting children?s development.
+       Resources: Mental Health Impact of Smartphone Addiction<br>
+     <br>  The following are useful links to resources, including studies, which offer insights, guidance and other information on smartphone effects on brains.
+
+           
+	</p>
+        </li>
+		
+        <li class="c-services__item">
+            <h3>COVID-19 Made You Addicted to Your Phone??</h3>
+            <p>
+			Hackensack Meridian Health, ?Has COVID-19 Made You Addicted to Your Phone?? ? Digital dependency, which describes reliance on smartphones and 
+      social media, can lead to mental health issues,<br>
+     <br> Johns Hopkins All Children?s Hospital, ?Addiction to Electronic Devices? ? This resource offers descriptions and signs of cellphone addiction,
+      including how it impacts relationships,<br>
+     <br> Tech Times, ?MRIs Show How Much Damage to Your Brain a Smartphone Addiction Can Inflict? ? Evidence is growing that smartphone addiction can 
+      physically affect your brain, including changing its shape and size.
+
+           
+			</p>
+        </li>
+		
+		
+		
+        <li class="c-services__item">
+            <h3>The first step is recognizing the problem.</h3>
+            <p>
+			
+           Recognize the triggers that compel you to use a smartphone.<br> The first step is recognizing the problem. For example, 
+		  <br> a smartphone may distract you from mood swings caused by depression, <br>stress or anxiety. But reaching for a smartphone 
+		   may make these mental health issues worse.<br> Try healthier alternatives including relaxation and stress management techniques.<br>
+           Understand how in-person interactions differ from online interactions.<br> Social anxiety and avoidance is common in people with 
+		   smartphone addictions. Taking the time to reconnect with others can help you to alleviate feelings of isolation.<br>
+           <br>Develop coping skills. Limiting phone usage can be frustrating. But the more a person overcomes the difficulties, the more 
+		  <br> resilient they become. Relational connection, such as a good talk with a friend, can go a long way in helping you feel calm,
+		   getting others to understand you better and increasing your resilience.<br>
+        <br>   Modify smartphone use. Putting your phone away may seem like a simple step. Still, for individuals with smartphone addiction.<br>
+		 <br>  withdrawing from their smartphones can be tough. Try turning off notifications, setting time limits and using social media limiting apps.
+			</p>
+        </li>
+		
+		
+		
+        <li class="c-services__item">
+            <h3>How to Break Smartphone Addiction.</h3>
+            <p>
+			Smartphones are designed to keep users glued to their screens.<br> and push notifications are one technique used to do this.
+			A push notification is when a message is sent from a server to a device without the user initiating the request.<br>
+			<br>These notifications arrive with sounds, alerts and images that attract smartphone users? attention, inviting them to
+			<br>engage with something. Algorithms that predict user behavior and preferences and user-friendly interfaces also make it
+			easy for people to scroll through content.<br>
+           <br> Not everyone becomes addicted, but for those who are exhibiting smartphone addiction signs, the following tips and strategies
+			on how to break smartphone addiction may help.<br>
+
+           
+			</p>
+        </li>
+		
+		
+		
+		
+    </ul>
+</section>
+
+<button class="btn"><a href="index.html">HomePage</a></button>
+
+</body>
+</html>
